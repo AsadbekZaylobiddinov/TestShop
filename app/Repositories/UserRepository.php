@@ -46,7 +46,6 @@ class UserRepository
             $query->with($relations);
         } 
 
-        return new Result(200,"Urs","g");
         return !empty($filters) ? $query->get() : User::all();
         }
         catch(Exception $e){

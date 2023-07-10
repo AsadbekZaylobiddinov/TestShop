@@ -28,7 +28,7 @@ Route::post('/user',[UserController::class, 'store']);
 
 Route::get('/user/{id}',[UserController::class, 'show']);
 
-Route::get('/user',[UserController::class,'index']);
+Route::get('user',[UserController::class,'index']);
 
 Route::post('/user',[UserController::class, 'store']);
 
@@ -65,7 +65,9 @@ Route::get('/product',[ProductController::class,'index']);
 
 
 
-
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
 
 //Category 
 

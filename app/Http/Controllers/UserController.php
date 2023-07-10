@@ -7,11 +7,12 @@ use App\Interfaces\IUserService;
 
 class UserController extends Controller
 {
-    protected $_userService;
 
-    public function __construct(IUserService $userService)
+    private IUserService $_userService;
+    
+    public function __construct(IUserService $_userService)
     {
-        $this->_userService = $userService;
+        $this->_userService = $_userService;
     }
     /**
      * Display a listing of the resource.

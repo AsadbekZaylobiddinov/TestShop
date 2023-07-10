@@ -14,7 +14,7 @@ class ProductDto extends DataTransferObject
     public int $sub_category_id;
 
     
-    public static function fromRequest(Request $request): self
+    public static function forCreation(Request $request): self
     {
         return new self([
             'title' => $request->input('title'),
@@ -27,7 +27,7 @@ class ProductDto extends DataTransferObject
         ]);
     } 
 
-    public static function fromModel(Product $product): self
+    public static function forResult(Product $product): self
     {
     return new self([
         'title' => $product->title,

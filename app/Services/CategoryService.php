@@ -12,8 +12,8 @@ use App\Interfaces\ICategoryService;
 
 class CategoryService implements ICategoryService
 {
-    protected $_categoryRepository;
-    protected $_subCategoryRepository;
+    private $_categoryRepository;
+    private $_subCategoryRepository;
 
     public function __construct(CategoryRepository $categoryRepository,
     SubCategoryRepository $subCategoryRepository)

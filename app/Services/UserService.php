@@ -11,14 +11,14 @@ use App\Helpers\ResponseBody as Result;
 use App\Repositories\UserRepository;
 use App\Repositories\CartRepository;
 
-class UserService
+class UserService implements IUserService
 {
     protected $_userRepository;
     protected $_cartRepository;
 
 
     public function __construct(UserRepository $userRepository,
-    CartRepository $cartRepository)
+    protected CartRepository $cartRepository)
     {
         $this->_userRepository = $userRepository;
         $this->_cartRepository = $cartRepository;
@@ -56,7 +56,7 @@ class UserService
         $result;
         if($user != null)
         {
-            $result = new Result(200,"Successful",UserForCreationDto::forResult($user));
+            $result = new Result(200,"Successful",UserDto::forResult($user));
         }
         else{
             $result = new Result(404,"Not Found",null);
@@ -68,13 +68,7 @@ class UserService
     // Возвращает всех пользователей
     public function GetAll()
     {
-        try{
-            return $this->_userRepository->SelectAll();
-        }
-        catch(Exception $e){
-            throw new Exception($e->message);
-        }
-        
+        return new Result(200,"Successful",UserDto::forResult($this->_userRepository->SelectAll()));
     }
 
     //Обновляет пользователя

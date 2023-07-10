@@ -34,24 +34,24 @@ class AppServiceProvider extends ServiceProvider
 
         //Binding Repositories
 
-        $this->app->bind(UserRepository::class, function (Application $app) {
-            return new UserRepository($app->make(UserRepository::class));
+        $this->app->scoped(UserRepository::class, function (Application $app) {
+            return new UserRepository();
         });
 
         $this->app->bind(ProductRepository::class, function (Application $app) {
-            return new ProductRepository($app->make(ProductRepository::class));
+            return new ProductRepository();
         });
 
         $this->app->bind(ProductImageRepository::class, function (Application $app) {
-            return new ProductImageRepository($app->make(ProductImageRepository::class));
+            return new ProductImageRepository();
         });
 
         $this->app->bind(CartProductRepository::class, function (Application $app) {
-            return new CartProductRepository($app->make(CartProductRepository::class));
+            return new CartProductRepository();
         });
 
         $this->app->bind(CartRepository::class, function (Application $app) {
-            return new CartRepository($app->make(CartRepository::class));
+            return new CartRepository();
         });
 
         //Binding Services

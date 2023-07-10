@@ -9,6 +9,7 @@ use App\Helpers\ResponseBody as Result;
 use App\DTOs\Product\ProductDto;
 use App\DTOs\Product\ProductImageDto;
 use App\Repositories\ProductRepository;
+use App\Repositories\ProductImageRepository;
 
 class ProductService implements IProductService
 {
@@ -19,7 +20,7 @@ class ProductService implements IProductService
     ProductImageRepository $productImageRepository)
     {
         $_productRepository = $productRepository;
-        $_productImageRepository = $productImagetRepository;
+        $_productImageRepository = $productImageRepository;
     }
 
     //Создаёт продукт
@@ -53,7 +54,7 @@ class ProductService implements IProductService
     //Возвращает все продукты
     public function GetAll()
     {
-        return new Result(200, "Successful","Hello");
+        return new Result(200,"Successful",ProductDto::forResult($this->_productRepository->Select()));
     }
 
     //Обновляет продукт

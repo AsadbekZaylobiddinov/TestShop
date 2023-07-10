@@ -10,8 +10,8 @@ use App\Helpers\ResponseBody as Result;
 
 class CartService implements ICartService
 {
-    protected $_cartRepository;
-    protected $_cartProductRepository;
+    private $_cartRepository;
+    private $_cartProductRepository;
 
     public function __construct(CartRepository $cartRepository,
     CartProductRepository $cartProductRepository)
